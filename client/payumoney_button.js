@@ -66,10 +66,10 @@ Template.payumoneyButton.helpers({
       return Template.instance().email.get();
   },
   surl:function(){
-      return Meteor.absoluteUrl("transaction/"+instance.txnid.get());
+      return Meteor.absoluteUrl("transaction/"+ Template.instance.txnid.get());
   },
   furl:function(){
-      return Meteor.absoluteUrl("transaction/"+instance.txnid.get());
+      return Meteor.absoluteUrl("transaction/"+ Template.instance.txnid.get());
   },
   service_provider:function(){
       return Template.instance().service_provider.get();
