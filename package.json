@@ -1,0 +1,13 @@
+{
+  "name": "meteor-payumoney-example",
+  "private": true,
+  "scripts": {
+    "start": "meteor run"
+  },
+  "dependencies": {
+    "body-parser": "1.15.2",
+    "jssha": "2.2.0",
+    "meteor-node-stubs": "~0.2.0",
+    "querystring": "0.2.0"
+  }
+}

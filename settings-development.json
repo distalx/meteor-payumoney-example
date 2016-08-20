@@ -1,0 +1,8 @@
+{
+  "public": {
+    "payu_key": "payu_key"
+  },
+  "private": {
+    "payu_salt": "payu_salt"
+  }
+}

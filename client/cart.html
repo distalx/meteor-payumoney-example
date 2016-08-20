@@ -1,0 +1,24 @@
+<template name="cart">
+<div class="container">
+  {{#each cart}}
+  <div class="row">
+    <div class="col-md-6"> Product</div>
+    <div class="col-md-3"> QTY</div>
+    <div class="col-md-3"> Price</div>
+    <hr><br>
+    {{#each items}}
+      <div class="col-md-6"> {{name}}</div>
+      <div class="col-md-3"> {{qty}}</div>
+      <div class="col-md-3"> {{price}}</div>
+    {{/each}}
+    <hr><br>
+    <hr><br>
+    <div class="col-md-6"> TOTAL</div>
+    <div class="col-md-3"> {{total.items}}</div>
+    <div class="col-md-3"> {{total.amount}}</div>
+
+  </div>
+  {{>payumoneyButton cart=this}}  
+  {{/each}}
+</div>
+</template>

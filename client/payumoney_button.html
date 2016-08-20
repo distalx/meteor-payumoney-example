@@ -1,0 +1,17 @@
+<template name="payumoneyButton">
+  <form method="post" action="https://test.payu.in/_payment">
+
+      <input type="hidden" name="key" value={{key}}><br>
+      <input type="hidden" name="txnid" value={{txnid}}><br>
+      <input type="hidden" name="amount" value={{amount}}><br>
+      <input type="hidden" name="productinfo" value={{productinfo}}><br>
+      <input type="hidden" name="firstname" value={{firstname}}><br>
+      <input type="hidden" name="phone" value={{phone}}><br>
+      <input type="hidden" name="email" value={{email}}><br>
+      <input type="hidden" name="surl" value={{surl}}>
+      <input type="hidden" name="furl" value={{furl}}>
+      <input type="hidden" name="service_provider" value={{service_provider}}>
+      <input type="hidden" name="hash" value={{hash}}>
+      <button type="submit" class="btn btn-default">Pay with PayU</button>
+  </form >
+</template>
