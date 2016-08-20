@@ -12,3 +12,9 @@ FlowRouter.route('/payment_status', {
       BlazeLayout.render('paymentStatus');
     }
 });
+
+FlowRouter.route('/transaction/:transactionId' , {
+    action: function(params, queryParams) {
+      BlazeLayout.render('transaction');
+    }
+});
