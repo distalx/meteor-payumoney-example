@@ -1,10 +1,11 @@
 import { Meteor } from 'meteor/meteor';
-
+import {HTTP} from 'meteor/http';
+import querystring from 'querystring';
 import jsSHA from "jssha";
 
 
-var querystring = require('querystring');
-var http = require('https');
+
+
 
 Meteor.startup(() => {
   // code to run on server at startup
@@ -35,37 +36,43 @@ Meteor.methods({
 Meteor.methods({
   getPaymentResponse:function(transactionId){
 
+    //fetch the transaction by id here
+    // const transaction = Transactions.findOne({"_id": transactionId });
+    // transaction.hash === res.content.result[0].postBackParam.hash
 
     var data = querystring.stringify({
         merchantKey: Meteor.settings.public.payu_key,
         merchantTransactionIds: transactionId
     });
-    var options = {
-        hostname: 'test.payumoney.com',
-        port: 443,
-        path: '/payment/op/getPaymentResponse?'+data,
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Content-Length': Buffer.byteLength(data),
-            'content': data,
-            'accept': '*/*',
-            'Authorization': Meteor.settings.private.payu_authorization,
-        }
-    };
 
-    var req = http.request(options, function(res) {
+    var headers = {
+              'Content-Type': 'application/json',
+              'Content-Length': Buffer.byteLength(data),
+              'content': data,
+              'accept': '*/*',
+              'Authorization': Meteor.settings.private.payu_authorization,
+          }
 
-        res.setEncoding('utf8');
-        res.on('data', function(chunk) {    // data will be available in callback
 
-            console.log("body: " + chunk);
-        });
-    });
-    req.on('error',function(e){
-      console.log('Error'+ e.message);
-    });
-    req.write(data);
-    req.end();
+      // this.unblock();
+      try {
+
+        HTTP.call("POST","https://test.payumoney.com:443/payment/op/getPaymentResponse?" + data ,
+                { headers: headers },
+                function (err, res) {
+                  if (!err) {
+                    console.log(res);
+                  }
+                });
+
+
+
+      } catch (e) {
+
+        return false;
+      }
+
+
   }
+
 });

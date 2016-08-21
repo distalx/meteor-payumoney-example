@@ -15,7 +15,7 @@ Template.transaction.onCreated(function transaction() {
           console.log("error", error);
         }
         if(result){
-          //console.log(result);
+          console.log(result);
           instance.paymentResponse.set(result);
         }
     });
@@ -26,7 +26,7 @@ Template.transaction.onCreated(function transaction() {
 
 Template.transaction.helpers({
   details: function(){
-    
+
     //return Template.instance().paymentResponse.get();
   }
 });
